@@ -3,6 +3,10 @@
     padding: 1rem 2rem;
     border-top: 1px solid #999;
     border-bottom: 1px solid #999;
+
+    position: fixed;
+    z-index: 500;
+    background-color: white;
 }
 
 .suggestions {
@@ -29,7 +33,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 3rem 1rem;
-    padding: 3rem 0;
+    padding: 6rem 0;
     margin: 0 1.5rem;
     border-top: 4px solid #CCCCCC;
 }
