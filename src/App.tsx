@@ -15,7 +15,7 @@ function App() {
       <Navbar setOpen={setOpen} />
       <Sidebar isOpen={isOpen} />
 
-      <main className="main-app">
+      <main className={`main-app ${!isOpen ? 'is-open' : ''}`}>
         <Router>
           <Routes>
             <Route path='/' element={<Home />} />

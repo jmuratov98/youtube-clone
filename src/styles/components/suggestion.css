@@ -1,0 +1,26 @@
+.suggestion {
+    margin-right: 1rem;
+    word-wrap: none;
+    white-space: nowrap;
+    border: 1px solid #CCC;
+    border-radius: 900px;
+    background-color: #E7E7E7;
+    padding: .5rem 1rem;
+    font-size: inherit;
+    cursor: pointer;
+    transition: background-color 150ms;
+}
+
+.suggestion:hover {
+    background-color: #DDD;
+}
+
+.suggestion.active {
+    background-color: #606060;
+    color: white;
+    border-color: #EEE;
+}
+  
+.suggestion:last-child {
+    margin-right: 0;
+}
