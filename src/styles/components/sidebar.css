@@ -1,6 +1,6 @@
 .sidebar {
     position: fixed;
-    height: 100%;
+    height: calc(100% - 56px);
     width: 240px;
     z-index: 500;
     display: none;

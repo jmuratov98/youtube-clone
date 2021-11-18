@@ -1,3 +1,6 @@
+import { Button } from '@mui/material';
+import { User } from '@firebase/auth';
+
 import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton'
 
@@ -7,18 +10,27 @@ import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+
+import { login, logout } from '../firestore';
+
 import useInput from '../hooks/useInput';
 
 import logo from '../logo.png';
 
 interface NavbarProps {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    user: User | null;
 }
 
 const Navbar = ({
-    setOpen
+    setOpen,
+    user
 }: NavbarProps) => {
     const { input: search, onChange } = useInput('');
+
+    console.log(user?.photoURL);
 
     return (
         <header className="navbar">
@@ -50,27 +62,54 @@ const Navbar = ({
             </form>
 
             <div className="navbar__menu-icons">
-                <a href="#">
-                    <IconButton>
-                        <VideoCallOutlinedIcon />
-                    </IconButton>
-                </a>
-                <a href="#">
-                    <IconButton>
-                        <AppsOutlinedIcon />
-                    </IconButton>
-                </a>
-                <a href="#">
-                    <IconButton>
-                        <NotificationsNoneOutlinedIcon />
-                    </IconButton>
-                </a>
-                <IconButton>
-                    <Avatar sx={{ width: '32px', height: '32px', }} />
-                </IconButton>
+                <MenuIcons user={user} />
             </div>
         </header>
     );
+}
+
+interface MenuIcons {
+    user: User | null;
+}
+
+const MenuIcons = ({ user }: MenuIcons) => {
+    return user ? (
+        <>
+            <IconButton>
+                <VideoCallOutlinedIcon />
+            </IconButton>
+            <IconButton>
+                <AppsOutlinedIcon />
+            </IconButton>
+            <IconButton>
+                <NotificationsNoneOutlinedIcon />
+            </IconButton>
+            <IconButton>
+                <Avatar
+                    sx={{ width: '32px', height: '32px', }}
+                    alt="Avatar"
+                    src={user?.photoURL ? user?.photoURL : ''}
+                    onClick={logout}
+                />
+            </IconButton></>
+    ) : (
+        <>
+            <IconButton>
+                <AppsOutlinedIcon />
+            </IconButton>
+            <IconButton>
+                <MoreVertIcon />
+            </IconButton>
+
+            <Button
+                variant="outlined"
+                onClick={login}
+                startIcon={<AccountCircleOutlinedIcon />}
+            >
+                Sign Up
+            </Button>
+        </>
+    )
 }
 
 export default Navbar;
