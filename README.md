@@ -1,4 +1,22 @@
-# Getting Started with Create React App
+# YouTube Clone
+
+## Goal
+
+The goal of the project is to create a simple YouTube clone. For now this is just a frontend application with only authentication capabilitiess. More features to come soon.
+
+## TechStack
+
+[x] React & Typescript
+[x] Firebase
+[x] MaterialUI
+[x] MobX
+
+## TODO
+[ ] Add and remove videos
+[ ] Search feature for videos, playlists, and channels
+[ ] Watch videos
+[ ] Comment, like, and dislike videos
+[ ] Subscribe to channels
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
